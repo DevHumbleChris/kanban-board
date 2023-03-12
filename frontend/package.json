@@ -1,0 +1,58 @@
+{
+  "name": "kanban-board",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@headlessui/vue": "^1.7.11",
+    "@heroicons/vue": "^2.0.16",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "chart.js": "^4.2.1",
+    "pinia": "^2.0.28",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "vue": "^3.2.45",
+    "vue-chart-3": "^3.1.8",
+    "vue-router": "^4.1.6",
+    "vue3-toastify": "^0.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.22.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.0.0"
+  },
+  "description": "Kanban Board built with Vue, Pinia, Firebase and TailwindCSS. Helps one in managing their projects with ease.",
+  "main": "vite.config.js",
+  "keywords": [
+    "taskie",
+    "vue",
+    "tailwindcss",
+    "pinia",
+    "AmChrisKE"
+  ],
+  "author": "AmChrisKE",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevHumbleChris/kanban-board.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DevHumbleChris/kanban-board/issues"
+  },
+  "homepage": "https://github.com/DevHumbleChris/kanban-board#readme"
+}
