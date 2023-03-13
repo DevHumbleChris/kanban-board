@@ -5,7 +5,7 @@ import { PrismaService } from './../../prisma/prisma.service';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { User } from '@prisma/client';
-import { JwtService } from '@nestjs/jwt';
+import { JwtService } from '@nestjs/jwt'
 
 @Injectable()
 export class AuthService {
@@ -36,7 +36,12 @@ export class AuthService {
     });
 
     return {
-      user: newUser,
+      user: {
+        email: newUser.email,
+        username: newUser.username,
+        createdAt: newUser.createdAt
+      },
+      accessToken: newUser.accessToken,
       message: 'Signed up successfull!',
       loggedIn: true
     };
