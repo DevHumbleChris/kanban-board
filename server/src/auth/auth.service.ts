@@ -79,7 +79,7 @@ export class AuthService {
         createdAt: user.createdAt
       },
       accessToken: token,
-      message: 'Signed up successfull!',
+      message: 'Signed in successfull!',
       loggedIn: true
     };
   }
