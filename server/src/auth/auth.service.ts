@@ -1,8 +1,9 @@
+import { UserDTO } from './../dto/user.dto';
 /* eslint-disable prettier/prettier */
 import { jwtSecret } from './../utils/constants';
 import { NewUserDTO } from './../dto/newuser.dto';
 import { PrismaService } from './../../prisma/prisma.service';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, ForbiddenException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { User } from '@prisma/client';
 import { JwtService } from '@nestjs/jwt'
@@ -47,8 +48,40 @@ export class AuthService {
     };
   }
 
-  async sigin() {
-    return 'Signed in route';
+  async sigin(data: UserDTO) {
+    const { email, password } = data;
+
+    // Check if user exists.
+    const user = await this.getUserByEmail(email);
+
+    if (!user) {
+      throw new BadRequestException('Email Does not Exists');
+    }
+
+    // check if Password is correct.
+    const isPasswordCorrect = await this.comparePassword({ password, hashedPassword: user.password });
+
+    if(!isPasswordCorrect) {
+      throw new BadRequestException('Password is incorrect!');
+    }
+
+    // get access tokens.
+    const token = await this.signTokens({ email: user.email, username: user.username });
+
+    if(!token) {
+      throw new ForbiddenException()
+    }
+
+    return {
+      user: {
+        email: user.email,
+        username: user.username,
+        createdAt: user.createdAt
+      },
+      accessToken: token,
+      message: 'Signed up successfull!',
+      loggedIn: true
+    };
   }
 
   // Hash Password.
